@@ -34,3 +34,6 @@
 [submodule "vendor/plugins/footnotes"]
 	path = vendor/plugins/footnotes
 	url = git://github.com/activefx/rails-footnotes.git
+[submodule "vendor/plugins/shoulda"]
+	path = vendor/plugins/shoulda
+	url = git://github.com/thoughtbot/shoulda.git
