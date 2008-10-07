@@ -7,3 +7,8 @@ doc/app
 doc/plugins
 config/initializers/site_keys.rb
 *~
+.DS_Store
+**/*.swp
+**/*.sqlite3
+public/tmp
+*.swp

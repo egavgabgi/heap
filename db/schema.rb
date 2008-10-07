@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(:version => 20080911154835) do
     t.datetime "updated_at"
   end
 
-  add_index "four_oh_fours", ["url", "referer"], :name => "index_four_oh_fours_on_url_and_referer", :unique => true
   add_index "four_oh_fours", ["url"], :name => "index_four_oh_fours_on_url"
+  add_index "four_oh_fours", ["url", "referer"], :name => "index_four_oh_fours_on_url_and_referer", :unique => true
 
   create_table "invitations", :force => true do |t|
     t.integer  "sender_id"
@@ -59,14 +59,6 @@ ActiveRecord::Schema.define(:version => 20080911154835) do
     t.string  "salt",       :null => false
   end
 
-  create_table "pages", :force => true do |t|
-    t.string   "title"
-    t.string   "body"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "roles", :force => true do |t|
     t.string "name"
   end
@@ -76,8 +68,8 @@ ActiveRecord::Schema.define(:version => 20080911154835) do
     t.integer "user_id"
   end
 
-  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
   add_index "roles_users", ["user_id"], :name => "index_roles_users_on_user_id"
+  add_index "roles_users", ["role_id"], :name => "index_roles_users_on_role_id"
 
   create_table "user_failures", :force => true do |t|
     t.string   "remote_ip"
