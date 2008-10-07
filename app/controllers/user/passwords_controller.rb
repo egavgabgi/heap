@@ -15,40 +15,40 @@ class User::PasswordsController < ApplicationController
       render :action => 'new'
     end  
   end
-  
+
   # Action triggered by clicking on the /reset_password/:id link recieved via email
   # Checks that the id code matches a user in the database
   # Then if everything checks out, shows the password reset fields
   def edit
-		@bad_visitor = UserFailure.failure_check(request.remote_ip)
-		if params[:id].nil?
-			flash[:error] = "The password reset code was missing."
-			redirect_to root_path
-		end
+    @bad_visitor = UserFailure.failure_check(request.remote_ip)
+    if params[:id].nil?
+      flash[:error] = "The password reset code was missing."
+      redirect_to root_path
+    end
   end
-    
+
   # Reset password action /reset_password/:id
   def update
-		@bad_visitor = UserFailure.failure_check(request.remote_ip)
-		if @bad_visitor && !verify_recaptcha
-			flash[:error] = "The captcha was incorrect, please follow the link from your email again."
-			redirect_to root_path
-			return
-		end
+    @bad_visitor = UserFailure.failure_check(request.remote_ip)
+    if @bad_visitor && !verify_recaptcha
+      flash[:error] = "The captcha was incorrect, please follow the link from your email again."
+      redirect_to root_path
+      return
+    end
     SiteUser.find_and_reset_password(params[:password], params[:password_confirmation], 
-			params[:reset_code]) do |error, message, path, failure|
-			if path
-				UserFailure.record_failure(request.remote_ip, 
-					request.env['HTTP_USER_AGENT'], "passwordreset", nil) if failure
-				flash[error] = message
-				redirect_to send(path)
-			else
-				flash.now[error] = message
-				render :action => 'edit', :id => params[:id]
-			end
-		end
-	end
-    
+                                     params[:reset_code]) do |error, message, path, failure|
+      if path
+        UserFailure.record_failure(request.remote_ip, 
+                                   request.env['HTTP_USER_AGENT'], "passwordreset", nil) if failure
+        flash[error] = message
+        redirect_to send(path)
+      else
+        flash.now[error] = message
+        render :action => 'edit', :id => params[:id]
+      end
+    end
+  end
+
 end
 
 

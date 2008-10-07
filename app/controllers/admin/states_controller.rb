@@ -1,6 +1,6 @@
 class Admin::StatesController < ApplicationController
-	before_filter :login_required
-	require_role :admin
+  before_filter :login_required
+  require_role :admin
 
   def update
     @user = User.find_by_login(params[:id])

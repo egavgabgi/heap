@@ -4,7 +4,7 @@ class UserMailer < ActionMailer::Base
     @subject    += 'Please activate your new account.'
     @body[:url]  = "http://#{APP_CONFIG['settings']['domain']}/activate/#{user.activation_code}" 
   end
-  
+
   def activation(user)
     setup_email(user)
     @subject    += 'Your account has been activated!'
@@ -22,19 +22,19 @@ class UserMailer < ActionMailer::Base
     @subject    += 'Your password has been reset.'
   end
 
-	def invitation(invitation)
-		setup_email(invitation)
-	  @subject    += 'You have been invited to our private beta!'
-		@body[:url] = "http://#{APP_CONFIG['settings']['domain']}/signup/#{invitation.token}"
-	  invitation.update_attribute(:sent_at, Time.now)
-	end
+  def invitation(invitation)
+    setup_email(invitation)
+    @subject    += 'You have been invited to our private beta!'
+    @body[:url] = "http://#{APP_CONFIG['settings']['domain']}/signup/#{invitation.token}"
+    invitation.update_attribute(:sent_at, Time.now)
+  end
 
   protected
-    def setup_email(user)
-      @recipients  = "#{user.email}"
-      @from        = APP_CONFIG['mail']['sender']
-      @subject     = "#{APP_CONFIG['settings']['name']} - "
-      @sent_on     = Time.now
-      @body[:user] = user
-    end
+  def setup_email(user)
+    @recipients  = "#{user.email}"
+    @from        = APP_CONFIG['mail']['sender']
+    @subject     = "#{APP_CONFIG['settings']['name']} - "
+    @sent_on     = Time.now
+    @body[:user] = user
+  end
 end

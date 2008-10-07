@@ -1,18 +1,18 @@
 class OpenidSessionsController < SessionsController
-	before_filter :login_prohibited
+  before_filter :login_prohibited
 
-	def index
-	
-	end
+  def index
 
-	def new
-		#	Display recaptcha only if the number of failed logins have 
-		# exceeded the specified limit within a certain timeframe
-		@bad_visitor = UserFailure.failure_check(request.remote_ip)
+  end
+
+  def new
+    #	Display recaptcha only if the number of failed logins have 
+    # exceeded the specified limit within a certain timeframe
+    @bad_visitor = UserFailure.failure_check(request.remote_ip)
     respond_to do |format|
       format.html 
-			format.js
+      format.js
     end
-	end
+  end
 
 end

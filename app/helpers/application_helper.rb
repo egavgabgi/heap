@@ -21,38 +21,38 @@ module ApplicationHelper
     end
   end
 
-	def if_admin?
+  def if_admin?
     yield if logged_in? && current_user.has_role?('admin')
-	end
+  end
 
-	def if_logged_in?
-		yield if logged_in?
-	end
+  def if_logged_in?
+    yield if logged_in?
+  end
 
-	def if_recaptcha?
-		yield if @bad_visitor
-	end
+  def if_recaptcha?
+    yield if @bad_visitor
+  end
 
-	def in_beta?
-		APP_CONFIG['settings']['in_beta']
-	end
+  def in_beta?
+    APP_CONFIG['settings']['in_beta']
+  end
 
-	def if_in_beta?
-		yield if in_beta?
-	end
+  def if_in_beta?
+    yield if in_beta?
+  end
 
-	def unless_in_beta?
-		yield unless in_beta?
-	end
+  def unless_in_beta?
+    yield unless in_beta?
+  end
 
-	def if_invites_available?
-		yield if in_beta? and logged_in? and (current_user.invitation_limit > 0)
-	end
+  def if_invites_available?
+    yield if in_beta? and logged_in? and (current_user.invitation_limit > 0)
+  end
 
-	def focus_on_div(div)
-	  update_page do |page|
-	    page[div].focus
-	  end
-	end
+  def focus_on_div(div)
+    update_page do |page|
+      page[div].focus
+    end
+  end
 
 end
