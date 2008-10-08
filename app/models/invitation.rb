@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20080911154835
+#
+# Table name: invitations
+#
+#  id         :integer         not null, primary key
+#  sender_id  :integer
+#  email      :string(255)
+#  token      :string(255)
+#  sent_at    :datetime
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Invitation < ActiveRecord::Base
   belongs_to :sender, :class_name => 'User'
   has_one :recipient, :class_name => 'User'

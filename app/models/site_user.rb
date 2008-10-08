@@ -1,3 +1,28 @@
+# == Schema Information
+# Schema version: 20080911154835
+#
+# Table name: users
+#
+#  id                        :integer         not null, primary key
+#  user_type                 :string(255)
+#  login                     :string(40)
+#  name                      :string(100)     default("")
+#  email                     :string(100)
+#  crypted_password          :string(40)
+#  salt                      :string(40)
+#  created_at                :datetime
+#  updated_at                :datetime
+#  remember_token            :string(40)
+#  remember_token_expires_at :datetime
+#  activation_code           :string(40)
+#  activated_at              :datetime
+#  password_reset_code       :string(40)
+#  enabled                   :boolean         default(TRUE)
+#  identity_url              :string(255)
+#  invitation_id             :integer
+#  invitation_limit          :integer
+#
+
 class SiteUser < User
   include Authentication::ByPassword
 

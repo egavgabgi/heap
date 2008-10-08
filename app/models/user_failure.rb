@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 20080911154835
+#
+# Table name: user_failures
+#
+#  id              :integer         not null, primary key
+#  remote_ip       :string(255)
+#  http_user_agent :string(255)
+#  failure_type    :string(255)
+#  username        :string(255)
+#  count           :integer         default(0)
+#  created_at      :datetime
+#  updated_at      :datetime
+#
+
 class UserFailure < ActiveRecord::Base
   attr_accessible :remote_ip, :http_user_agent, :failure_type, :username
 

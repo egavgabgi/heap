@@ -1,3 +1,12 @@
+# == Schema Information
+# Schema version: 20080911154835
+#
+# Table name: roles
+#
+#  id   :integer         not null, primary key
+#  name :string(255)
+#
+
 class Role < ActiveRecord::Base
   #validates_presence_of     :name
   #validates_length_of       :name,    :within => 3..40
