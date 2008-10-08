@@ -37,3 +37,9 @@
 [submodule "vendor/plugins/shoulda"]
 	path = vendor/plugins/shoulda
 	url = git://github.com/thoughtbot/shoulda.git
+[submodule "public/stylesheets/blueprint"]
+	path = public/stylesheets/blueprint
+	url = git://github.com/joshuaclayton/blueprint-css.git
+[submodule "vendor/plugins/annotate_models"]
+	path = vendor/plugins/annotate_models
+	url = git://github.com/ctran/annotate_models.git

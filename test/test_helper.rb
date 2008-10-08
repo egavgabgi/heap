@@ -38,4 +38,13 @@ class Test::Unit::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  
+  def assert_false( actual_value, message = nil )
+    assert_equal false, actual_value, message
+  end
+  
+  def assert_true( actual_value, message = nil )
+    assert_equal true, actual_value, message
+  end
+  
 end
